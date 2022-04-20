@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+
+
+void nhap(int a[],int n)
+{
+    for (int i = 0;i<n;i++)
+    cin>>a[i];
+}
+void xuat(int a[], int n)
+{
+    for(int i=0;i<n;i++)
+    cout<<a[i]<<" ";;
+}
+int BinarySearch(int a[], int n, int x)
+{
+    int left = 0;
+    int right = n - 1;
+    int mid;
+    while (left <= right)
+    {
+        mid = (left + right) / 2;
+        if (a[mid] == x)
+            return mid; // tìm thấy x, trả về mid là vị trí của x trong mảng A
+        if (a[mid] > x)
+            right = mid - 1; // Giới hạn khoảng tìm kiếm lại là nửa khoảng trước
+        else if (a[mid] < x)
+            left = mid + 1; // Giới hạn khoảng tìm kiếm lại là nửa khoảng sau
+    }
+    return -1; // không tìm thấy x
+}
+void sapxep(int a[],int n)
+{
+    for (int i = 0;i<n;i++)
+    {
+        for (int j = 0;j<n;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                swap(a[j],a[j+1]);
+            }
+        }
+    }
+}
+int main()
+{
+    int n,x;
+    int  a[100];
+    cout<<"Nhap so phan tu: ";
+    cin>>n;
+    cout<<"Nhap phan tu : ";
+    nhap(a,n);
+    sapxep(a,n);
+    cout<<"Ham sau khi da sap xep: \n";
+    sapxep(a,n);
+    xuat(a,n);
+    cout<<"\nNhap gia tri can tim: "<<endl;
+    cin>>x;
+    int j=BinarySearch(a,n,x);
+        if(j==-1)
+        {
+            cout<<"Khong co gia tri: ";
+        }
+        else{
+
+        cout<<"vi tri cua "<<x<<" can tim la: "<< j+1;
+        }
+        return 0;
+}
