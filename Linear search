@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+int Linearsearch(int a[],int x)
+{
+    int n;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]==x)
+        {
+            return i;
+        }
+        
+    }
+    return -1;
+}
+void nhap(int a[],int n)
+{
+    for (int i = 0;i<n;i++)
+    cin>>a[i];
+}
+void xuat(int a[], int n)
+{
+    for(int i=0;i<n;i++)
+    cout<<a[i]<<" ";
+}
+void sapxep(int a[],int n)
+{
+    for (int i = 0;i<n;i++)
+    {
+        for (int j = 0;j<n;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                swap(a[j],a[j+1]);
+            }
+        }
+    }
+}
+int main()
+{
+    int n,x;
+    int  a[100];
+    cout<<"Nhap so phan tu: ";
+    cin>>n;
+    cout<<"Nhap phan tu : \n";
+    nhap(a,n);
+    sapxep(a,n);
+    cout<<"Ham sau khi da sap xep: \n";
+    sapxep(a,n);
+    xuat(a,n);
+    cout<<"\nNhap gia tri can tim kiem: ";
+    cin>>x;
+    int j=Linearsearch(a,x);
+    if(j==-1){
+        cout<<"Khong co gia tri";
+    }
+    else {
+
+    cout<<"Gia tri "<<x<<" o vi tri "<<j+1;
+    }
+    return 0;
+}
